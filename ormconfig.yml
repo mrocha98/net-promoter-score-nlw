@@ -1,0 +1,9 @@
+default:
+  type: "postgres"
+  url: "postgres://root:qwerty123@127.0.0.1:5439/nps-nlw"
+  entities: ["dist/**/entities/*.entity.js"]
+  migrations: ["dist/database/migrations/*.js"]
+  synchronize: false
+  logging: true
+  cli:
+    migrationsDir: "src/database/migrations"

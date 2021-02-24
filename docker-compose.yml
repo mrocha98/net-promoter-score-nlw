@@ -1,0 +1,33 @@
+version: "3.6"
+
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: nps-nlw-postgres
+    restart: unless-stopped
+    tty: true
+    environment:
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: qwerty123
+      POSTGRES_DB: nps-nlw
+      LANG: pt_BR.UTF-8
+    ports:
+      - 5439:5432
+    logging:
+      options:
+        max-size: "6m"
+        max-file: "4"
+
+  adminer:
+    image: adminer:latest
+    container_name: nps-nlw-adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: dracula
+    ports:
+      - 9600:8080
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "1"
